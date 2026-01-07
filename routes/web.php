@@ -5,12 +5,12 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
+//user route
 Route::get('/', [UserController::class, 'home'])->name('index');
-
-
-
 Route::get('/dashboard',[UserController::class, 'index'] )->middleware(['auth',
     'verified'])->name('dashboard');
+Route::get('/product_details/{id}', [UserController::class, 'productDetails'])->name('product_details');
+
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

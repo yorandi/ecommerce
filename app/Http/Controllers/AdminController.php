@@ -119,4 +119,5 @@ class AdminController extends Controller
 
         return redirect()->route('admin.viewproduct')->with('updateproduct_msg' , 'Produk Berhasil Diupdate');
     }
+
 }
