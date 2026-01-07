@@ -35,7 +35,7 @@
         <!-- header section strats -->
         <header class="header_section">
             <nav class="navbar navbar-expand-lg custom_nav-container ">
-                <a class="navbar-brand" href="index.html">
+                <a class="navbar-brand" href="={{ route('index') }}">
                     <span>
                         Ecommerce Me
                     </span>
@@ -49,7 +49,8 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav  ">
                         <li class="nav-item active">
-                            <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
+                            <a class="nav-link" href="{{ route('index') }}">Home <span
+                                    class="sr-only">(current)</span></a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="shop.html">
@@ -118,7 +119,7 @@
                                         <div class="detail-box">
                                             <h1>
                                                 Welcome To Our <br>
-                                                Gift Shop
+                                                Online Shop
                                             </h1>
                                             <p>
                                                 Sequi perspiciatis nulla reiciendis, rem, tenetur impedit, eveniet non
@@ -156,7 +157,7 @@
         <div class="container">
             <div class="heading_container heading_center">
                 <h2>
-                    Latest Products
+                    Produk Terbaru
                 </h2>
             </div>
             <div class="row">
@@ -223,8 +224,10 @@
                     <div class="map_container">
                         <div class="map-responsive">
                             <iframe
-                                src="https://www.google.com/maps/embed/v1/place?key=AIzaSyA0s1a7phLN0iaD6-UE7m4qP-z21pH0eSc&q=Eiffel+Tower+Paris+France"
-                                width="600" height="300" frameborder="0"
+                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d63467.667926675495!2d106.10018254863283!3d-6.167000699999991!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e421fe8c8b0e161%3A0xae2356fd9b4fcc34!2sKAMPUS%20UNBAJA%20II!5e0!3m2!1sid!2sus!4v1767802215753!5m2!1sid!2sus"
+                                width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+                                referrerpolicy="no-referrer-when-downgrade"> width="600" height="300"
+                                frameborder="0"
                                 style="border:0; width: 100%; height:100%" allowfullscreen></iframe>
                         </div>
                     </div>
@@ -320,15 +323,15 @@
                         <div class="info_link-box">
                             <a href="">
                                 <i class="fa fa-map-marker" aria-hidden="true"></i>
-                                <span> Gb road 123 london Uk </span>
+                                <span> Jl. Moh. syeh Nawawi Al-Bantani No. 2 </span>
                             </a>
                             <a href="">
                                 <i class="fa fa-phone" aria-hidden="true"></i>
-                                <span>+01 12345678901</span>
+                                <span>+62 12345678901</span>
                             </a>
                             <a href="">
                                 <i class="fa fa-envelope" aria-hidden="true"></i>
-                                <span> demo@gmail.com</span>
+                                <span> ecommerceme@business.com</span>
                             </a>
                         </div>
                     </div>
