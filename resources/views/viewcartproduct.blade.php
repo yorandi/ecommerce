@@ -8,6 +8,7 @@
             {{ session('cart_removed') }}
         </div>
     @endif
+
     <div class="container my-5">
         <div class="card shadow-sm border-0">
             <div class="card-header bg-white fw-bold fs-5">
@@ -73,7 +74,7 @@
                                         @csrf
                                         <button type="submit" class="btn btn-outline-danger btn-sm"
                                             onclick="return confirm('Yakin menghapus produk dari keranjang?')">
-                                            🗑️ Remove
+                                            🗑️ Hapus
                                         </button>
                                     </form>
                             </tr>
@@ -90,6 +91,72 @@
                 </span>
             </div>
         </div>
+        @if (session('order_confirmed'))
+            <div class="container my-5 mb-4 bg-success border border-green-400 text-white px-4 py-3 rounded relative">
+                {{ session('order_confirmed') }}
+            </div>
+        @endif
+        <div class="container my-5">
+            <div class="row justify-content-center">
+                <div class="col-md-6">
+
+                    <div class="card shadow-sm border-0">
+                        <div class="card-header bg-white fw-bold fs-5">
+                            📦 Informasi Pengiriman & Pembayaran
+                        </div>
+
+                        <div class="card-body">
+                            <form action="{{ route('confirm_order') }}" method="POST">
+                                @csrf
+
+                                <!-- Alamat -->
+                                <div class="mb-4">
+                                    <label class="form-label fw-semibold">
+                                        Alamat Pengiriman
+                                    </label>
+                                    <input type="text" class="form-control" name="address"
+                                        placeholder="Masukkan alamat lengkap" required>
+                                </div>
+
+                                <!-- Phone -->
+                                <div class="mb-4">
+                                    <label class="form-label fw-semibold">
+                                        Nomor Telepon
+                                    </label>
+                                    <input type="text" class="form-control" name="phone_number"
+                                        placeholder="08xxxxxxxxxx" required>
+                                </div>
+
+                                <!-- Payment -->
+                                <div class="mb-4">
+                                    <label class="form-label fw-semibold">
+                                        Metode Pembayaran
+                                    </label>
+                                    <select class="form-control" name="payment_method" required>
+                                        <option value="" selected disabled>
+                                            Pilih metode pembayaran
+                                        </option>
+                                        <option value="COD">Cash on Delivery</option>
+                                        <option value="Transfer">Transfer Bank</option>
+                                        <option value="Credit Card">Credit Card</option>
+                                    </select>
+                                </div>
+
+                                <!-- Submit -->
+                                <div class="d-grid mt-4">
+                                    <button type="submit" class="btn btn-primary btn-lg fw-semibold">
+                                        🛒 Konfirmasi Pesanan
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
     </div>
 
 @endsection

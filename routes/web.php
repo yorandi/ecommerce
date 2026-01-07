@@ -17,6 +17,8 @@ Route::post('/addtocart/{id}',[UserController::class, 'addToCart'] )->middleware
     'verified'])->name('cartProduct');
 Route::post('/removecartproduct/{id}', [UserController::class, 'removeCartProduct'])->middleware(['auth',
     'verified'])->name('removecartproduct');
+Route::post('/confirmorder', [UserController::class, 'confirmOrder'])->middleware(['auth',
+    'verified'])->name('confirm_order');
 
 
 Route::middleware('auth')->group(function () {

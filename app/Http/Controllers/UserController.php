@@ -4,10 +4,13 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use App\Models\User;
 use App\Models\Category;
 use App\Models\Product;
 use App\Models\ProductCart;
+use App\Models\Order;
+use App\Models\Cart;
 
 class UserController extends Controller
 {
@@ -83,5 +86,38 @@ class UserController extends Controller
         $cart_product = ProductCart::findOrFail($id);
         $cart_product->delete();
         return redirect()->back()->with('cart_removed', 'Produk berhasil dihapus dari keranjang!');
+    }
+
+    public function confirmOrder(Request $request){
+        $cartItems = ProductCart::where('user_id', Auth::id())->get();
+        $adress = $request->address;
+        $phone_number = $request->phone_number;
+        $payment_method = $request->payment_method;
+
+        if ($cartItems->isEmpty()) {
+        return redirect()->back()
+            ->with('error', 'Keranjang masih kosong!');
+        }
+
+        // 3️⃣ Simpan order + hapus cart (TRANSACTION)
+        DB::transaction(function () use ($cartItems, $request) {
+            foreach ($cartItems as $cart) {
+                Order::create([
+                    'user_id' => Auth::id(),
+                    'product_id' => $cart->product_id,
+                    'address' => $request->address,
+                    'phone_number' => $request->phone_number,
+                    'payment_method' => $request->payment_method,
+                    'quantity' => $cart->quantity
+                ]);
+            }
+
+            // hapus semua cart user
+            ProductCart::where('user_id', Auth::id())->delete();
+
+
+        });
+
+        return redirect()->back()->with('order_confirmed', 'Pesanan Anda telah dikonfirmasi!');
     }
 }
