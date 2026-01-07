@@ -7,9 +7,16 @@ use Illuminate\Support\Facades\Route;
 
 //user route
 Route::get('/', [UserController::class, 'home'])->name('index');
+Route::get('/product_details/{id}', [UserController::class, 'productDetails'])->name('product_details');
+Route::get('/allproduct', [UserController::class, 'viewAllProducts'])->name('viewallproducts');
 Route::get('/dashboard',[UserController::class, 'index'] )->middleware(['auth',
     'verified'])->name('dashboard');
-Route::get('/product_details/{id}', [UserController::class, 'productDetails'])->name('product_details');
+Route::post('/addtocart/{id}',[UserController::class, 'addToCart'] )->middleware(['auth',
+    'verified'])->name('addtocart');
+    Route::get('/cartproduct', [UserController::class, 'cartProduct'])->middleware(['auth',
+    'verified'])->name('cartProduct');
+Route::post('/removecartproduct/{id}', [UserController::class, 'removeCartProduct'])->middleware(['auth',
+    'verified'])->name('removecartproduct');
 
 
 Route::middleware('auth')->group(function () {

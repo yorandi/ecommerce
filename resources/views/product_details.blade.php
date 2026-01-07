@@ -2,6 +2,11 @@
 @section('hide_slider', '1')
 @section('hide_contact', '1')
 @section('content')
+    @if (session('cart_added'))
+        <div class="container my-5 mb-4 bg-success border border-green-400 text-white px-4 py-3 rounded relative">
+            {{ session('cart_added') }}
+        </div>
+    @endif
     <section class="shop_section layout_padding">
         <div class="container my-5">
             <div class="row">
@@ -33,21 +38,21 @@
                         {{ $product->product_description }}
                     </p>
 
-                    <!-- Quantity -->
-                    <div class="mb-3">
-                        <label class="form-label fw-semibold">Jumlah</label>
-                        <input type="number" class="form-control w-25" value="1" min="1">
-                    </div>
+                    <form action="{{ route('addtocart', $product->id) }}" method="POST">
+                        @csrf
 
-                    <!-- Buttons -->
-                    <div class="d-flex gap-2">
-                        <button class="btn btn-outline-primary px-4">
+                        <!-- Quantity -->
+                        <div class="mb-3">
+                            <label class="form-label fw-semibold">Jumlah</label>
+                            <input type="number" class="form-control w-25" name="quantity" value="1" min="1">
+                        </div>
+
+                        <!-- Button -->
+                        <button type="submit" class="btn btn-outline-primary px-4">
                             🛒 Add to Cart
                         </button>
-                        <button class="btn btn-primary px-4">
-                            ⚡ Buy Now
-                        </button>
-                    </div>
+                    </form>
+
                 </div>
             </div>
         </div>

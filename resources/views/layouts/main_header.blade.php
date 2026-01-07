@@ -1,6 +1,6 @@
 <header class="header_section">
     <nav class="navbar navbar-expand-lg custom_nav-container ">
-        <a class="navbar-brand" href="={{ route('index') }}">
+        <a class="navbar-brand" href="/">
             <span>
                 Ecommerce Me
             </span>
@@ -16,7 +16,7 @@
                     <a class="nav-link" href="{{ route('index') }}">Home <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="shop.html">
+                    <a class="nav-link" href="{{ route('viewallproducts') }}">
                         Shop
                     </a>
                 </li>
@@ -56,8 +56,8 @@
                         </span>
                     </a>
                 @endif
-                <a href="">
-                    <i class="fa fa-shopping-bag" aria-hidden="true"></i>
+                <a href="{{ route('cartProduct') }}">
+                    <i class="fa fa-shopping-bag" aria-hidden="true">{{ $count }}</i>
                 </a>
                 <form class="form-inline ">
                     <button class="btn nav_search-btn" type="submit">

@@ -1,10 +1,10 @@
 @extends('maindesign')
-@section('home')
+@section('content')
     <section class="shop_section layout_padding">
         <div class="container">
             <div class="heading_container heading_center">
                 <h2>
-                    Produk Terbaru
+                    Semua Produk
                 </h2>
             </div>
             <div class="row">
@@ -40,8 +40,8 @@
 
         </div>
         <div class="btn-box">
-            <a href="{{ route('viewallproducts') }}">
-                View All Products
+            <a href="{{ route('index') }}">
+                View Latest Products
             </a>
         </div>
         </div>
