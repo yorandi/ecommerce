@@ -28,6 +28,9 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::middleware('admin')->group(function () {
+     Route::get('/admin/dashboard', [AdminController::class, 'dashboard'])
+        ->name('admin.dashboard');
+
     Route::get('/add_category', [AdminController::class, 'addCategory'])->name('admin.addcategory');
     Route::post('/add_category', [AdminController::class, 'postAddCategory'])->name('admin.postaddcategory');
     Route::get('/view_category', [AdminController::class, 'viewcategory'])->name('admin.viewcategory');
@@ -42,6 +45,8 @@ Route::middleware('admin')->group(function () {
     Route::get('/delete_product/{id}', [AdminController::class, 'deleteProduct'])->name('admin.deleteproduct');
     Route::get('/update_product/{id}', [AdminController::class, 'updateProduct'])->name('admin.updateproduct');
     Route::post('/update_product/{id}', [AdminController::class, 'postUpdateProduct'])->name('admin.postupdateproduct');
+    //order route
+    Route::get('/view_order', [AdminController::class, 'viewOrder'])->name('admin.vieworder');
+   Route::post('/change_status/{id}', [AdminController::class, 'changeStatus'])->name('admin.changestatus');
 });
-
 require __DIR__.'/auth.php';

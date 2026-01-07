@@ -9,7 +9,7 @@
                         <div class="title">
                             <div class="icon"><i class="icon-user-1"></i></div><strong>Product</strong>
                         </div>
-                        <div class="number dashtext-1">2</div>
+                        <div class="number dashtext-1">{{ $totalProduct }}</div>
                     </div>
                     <div class="progress progress-template">
                         <div role="progressbar" style="width: 30%" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100"
@@ -23,7 +23,7 @@
                         <div class="title">
                             <div class="icon"><i class="icon-contract"></i></div><strong>Order Masuk</strong>
                         </div>
-                        <div class="number dashtext-2">70</div>
+                        <div class="number dashtext-2">{{ $orderMasuk }}</div>
                     </div>
                     <div class="progress progress-template">
                         <div role="progressbar" style="width: 70%" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100"
@@ -37,7 +37,7 @@
                         <div class="title">
                             <div class="icon"><i class="icon-paper-and-pencil"></i></div><strong>Order Selesai</strong>
                         </div>
-                        <div class="number dashtext-3">90</div>
+                        <div class="number dashtext-3">{{ $orderSelesai }}</div>
                     </div>
                     <div class="progress progress-template">
                         <div role="progressbar" style="width: 55%" aria-valuenow="55" aria-valuemin="0" aria-valuemax="100"
@@ -52,7 +52,7 @@
                             <div class="icon"><i class="icon-writing-whiteboard"></i></div><strong>Total
                                 Penjualan</strong>
                         </div>
-                        <div class="number dashtext-4">160</div>
+                        <div class="number dashtext-4">{{ $totalPenjualan }}</div>
                     </div>
                     <div class="progress progress-template">
                         <div role="progressbar" style="width: 35%" aria-valuenow="35" aria-valuemin="0" aria-valuemax="100"
@@ -62,4 +62,4 @@
             </div>
         </div>
     </div>
-@endsection()
+@endsection

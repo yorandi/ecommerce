@@ -1,5 +1,5 @@
 @extends('admin.maindesign')
-<base href="/public">
+
 @section('updatecategory')
     @if (session('updatecategory_msg'))
         <div class="mb-4 bg-success border border-green-400 text-white px-4 py-3 rounded relative">

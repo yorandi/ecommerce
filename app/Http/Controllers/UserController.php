@@ -20,7 +20,22 @@ class UserController extends Controller
             return view('dashboard');
 
         } else if(Auth::check() && Auth::user()->usertype == 'admin') {
-            return view('admin.dashboard');
+            $totalProduct = Product::count();
+
+            $orderMasuk = Order::where('status', 'pending')->count();
+
+            $orderSelesai = Order::where('status', 'completed')->count();
+
+            $totalPenjualan = Order::where('status', 'completed')->count();
+
+
+            return view('admin.dashboard', compact(
+                'totalProduct',
+                'orderMasuk',
+                'orderSelesai',
+                'totalPenjualan'
+            ));
+            // return view('admin.dashboard');
         }
 
     }

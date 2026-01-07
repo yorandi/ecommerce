@@ -5,9 +5,28 @@ namespace App\Http\Controllers;
 use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Http\Request;
+use App\Models\Order;
 
 class AdminController extends Controller
 {
+    public function dashboard()
+{
+    $totalProduct = Product::count();
+
+    $orderMasuk = Order::where('status', 'pending')->count();
+
+    $orderSelesai = Order::where('status', 'completed')->count();
+
+    $totalPenjualan = Order::where('status', 'completed')->count();
+
+
+    return view('admin.dashboard', compact(
+        'totalProduct',
+        'orderMasuk',
+        'orderSelesai',
+        'totalPenjualan'
+    ));
+}
     public function addCategory(){
         return view('admin.addcategory');
     }
@@ -118,6 +137,17 @@ class AdminController extends Controller
         }
 
         return redirect()->route('admin.viewproduct')->with('updateproduct_msg' , 'Produk Berhasil Diupdate');
+    }
+
+    public function viewOrder(){
+        $orders = Order::all();
+        return view('admin.vieworders', compact('orders'));
+    }
+    public function changeStatus(Request $request, $id){
+        $order = Order::findOrFail($id);
+        $order->status = $request->status;
+        $order->update();
+        return redirect()->back()->with('status_changed_msg' , 'Status Order Berhasil Diubah');
     }
 
 }
